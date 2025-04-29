@@ -74,7 +74,7 @@ void MPU6050_Init(void); //Initialize the communication with the MPU through I2C
 void MPU6050_Read_Accel(float *Ax, float *Ay, float *Az); //Read acceleration data
 void MPU6050_Read_Gyro(float *Gx, float *Gy, float *Gz); //Read Gyroscope data
 void MPU6050_Read_Temp(float *tempC); //Read temperature data
-void MPU6050_AngleEstimates(float *Ax, float *Ay, float *Az, float *Roll, float *Pitch)
+void MPU6050_AngleEstimates(float Ax, float Ay, float Az, float *Roll, float *Pitch);
 
 
 #endif /* INC_MPU6050_H_ */
