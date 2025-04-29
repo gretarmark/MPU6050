@@ -104,18 +104,18 @@ void MPU6050_Read_Temp(float *tempC)
 
 
 //Roll, Pitch, Yaw angle estimates using accelerometer readings
-void MPU6050_AngleEstimates(float *Ax, float *Ay, float *Az)
+void MPU6050_AngleEstimates(float *Ax, float *Ay, float *Az, float *Roll, float *Pitch)
 {
 	//1. Using this function only is close to true at rest... We need more than only this function!
 	//2. Typically we have high-frequency noise -> Apply low-pass filter to measurements!
 	//3. Time-varying bias term :( -> How can we estimate and cancel that? -> Initial calibration
 	//   We can do initial calibration by averaging some readings at rest and estimate the bias
 
-	float RAD_TO_DEG, phiHat_deg, thetaHat_deg;
+	//float RAD_TO_DEG, phiHat_deg, thetaHat_deg;
 
 	RAD_TO_DEG = 180.0 / PI;
-	phiHat_deg   = atanf(*Ay / *Az) * RAD_TO_DEG;  //Roll estimate
-	thetaHat_deg = asinf(*Ax / GRAVITY) * RAD_TO_DEG; //Pitch estimate
+	*Roll   = atanf(*Ay / *Az) * RAD_TO_DEG;  //Roll estimate
+	*Pirch = asinf(*Ax / GRAVITY) * RAD_TO_DEG; //Pitch estimate
 }
 
 
